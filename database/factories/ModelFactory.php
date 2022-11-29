@@ -40,3 +40,14 @@ $factory->define(App\Models\Role::class, static function (Faker\Generator $faker
         
     ];
 });
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\TblAnimal::class, static function (Faker\Generator $faker) {
+    return [
+        'nombre' => $faker->sentence,
+        'id_tipo_animal' => $faker->randomNumber(5),
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});

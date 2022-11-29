@@ -30,4 +30,9 @@ class TblTipoAnimal extends Model
     {
         return url('/admin/tbl-tipo-animals/' . $this->getKey());
     }
+
+    public function Animal()
+    {
+        return $this->hasMany(TblAnimal::class);
+    }
 }

@@ -101,7 +101,8 @@
 
                                         <td>@{{ item.id }}</td>
                                         <td>@{{ item.nombre }}</td>
-                                        <td>@{{ item.habilitado }}</td>
+                                        <td>@{{ item.habilitado == 1 ? "Si" : "No" }}
+                                        </td>
 
                                         <td>
                                             <div class="row no-gutters">

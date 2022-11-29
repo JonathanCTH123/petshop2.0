@@ -73,3 +73,18 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
         });
     });
 });
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('tbl-animals')->name('tbl-animals/')->group(static function() {
+            Route::get('/',                                             'TblAnimalController@index')->name('index');
+            Route::get('/create',                                       'TblAnimalController@create')->name('create');
+            Route::post('/',                                            'TblAnimalController@store')->name('store');
+            Route::get('/{tblAnimal}/edit',                             'TblAnimalController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'TblAnimalController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{tblAnimal}',                                 'TblAnimalController@update')->name('update');
+            Route::delete('/{tblAnimal}',                               'TblAnimalController@destroy')->name('destroy');
+        });
+    });
+});

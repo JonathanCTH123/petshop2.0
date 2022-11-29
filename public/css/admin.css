@@ -5499,6 +5499,10 @@ pre code {
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(66, 115, 250, 0.25);
 }
+.form-control::-moz-placeholder {
+  color: #73818f;
+  opacity: 1;
+}
 .form-control::placeholder {
   color: #73818f;
   opacity: 1;
@@ -5921,6 +5925,7 @@ textarea.form-control {
   text-align: center;
   vertical-align: middle;
   -webkit-user-select: none;
+     -moz-user-select: none;
           user-select: none;
   background-color: transparent;
   border: 1px solid transparent;
@@ -7098,6 +7103,7 @@ input[type=button].btn-block {
   border: 1px solid #e4e7ea;
   border-radius: 0.25rem;
   -webkit-appearance: none;
+     -moz-appearance: none;
           appearance: none;
 }
 .custom-select:focus {
@@ -7206,6 +7212,7 @@ input[type=button].btn-block {
   padding: 0;
   background-color: transparent;
   -webkit-appearance: none;
+     -moz-appearance: none;
           appearance: none;
 }
 .custom-range:focus {
@@ -7261,7 +7268,8 @@ input[type=button].btn-block {
   border-radius: 1rem;
   -moz-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .custom-range::-moz-range-thumb {
@@ -7933,8 +7941,10 @@ input[type=button].btn-block {
 }
 @media (min-width: 576px) {
   .card-columns {
-    column-count: 3;
-    column-gap: 1.25rem;
+    -moz-column-count: 3;
+         column-count: 3;
+    -moz-column-gap: 1.25rem;
+         column-gap: 1.25rem;
     orphans: 1;
     widows: 1;
   }
@@ -8715,6 +8725,7 @@ button.close {
   background-color: transparent;
   border: 0;
   -webkit-appearance: none;
+     -moz-appearance: none;
           appearance: none;
 }
 
@@ -14427,7 +14438,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 @media (min-width: 576px) {
   .card-columns.cols-2 {
-    column-count: 2;
+    -moz-column-count: 2;
+         column-count: 2;
   }
 }
 .chart-wrapper canvas {
@@ -14440,6 +14452,7 @@ base-chart.chart {
 
 canvas {
   -webkit-user-select: none;
+     -moz-user-select: none;
           user-select: none;
 }
 
@@ -14992,6 +15005,9 @@ canvas {
   color: #fff;
   background: #354059;
   border: 0;
+}
+.sidebar .sidebar-form .form-control::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
 .sidebar .sidebar-form .form-control::placeholder {
   color: rgba(255, 255, 255, 0.7);
@@ -18594,6 +18610,10 @@ label {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAARCAMAAADaFm2tAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAaVBMVEXH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/DH0/D///+DRpGzAAAAIXRSTlMAIKfwph/n9fnorqQJCw366/wOK7ItpVzu713Ws0JLV/QsgbohAAAAAWJLR0QiXWVcrAAAAAd0SU1FB+QCExY6ErfWKNYAAABvSURBVAjXVc1ZDoAgDEXRKuKM4ow4vv1vUlGicD9oTkJaorsgZCwKyMZjJCkybpmjKEWB/FVVS0EkZNM+7NCb0aN7OGA0Y8Rwv5PC16xphhMjeL1cOF8crmbxT2yb+xn77vE4PJ6npXLvKNLyl9QXBpMVRBNLZCUAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjAtMDItMjBUMDU6NTg6MTgtMDc6MDBncDo8AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIwLTAyLTIwVDA1OjU4OjE4LTA3OjAwFi2CgAAAAABJRU5ErkJggg==");
 }
 
+.form-control::-moz-placeholder {
+  color: #b9c8de;
+}
+
 .form-control::placeholder {
   color: #b9c8de;
 }
@@ -18654,7 +18674,8 @@ small select {
   width: 100%;
   height: 100%;
   -webkit-object-fit: cover;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .vue-dropzone.dropzone .dz-preview .dz-image i {
   width: 100%;
@@ -18748,6 +18769,10 @@ small select {
 }
 .multiselect__option--highlight:after {
   background: #60CF7D !important;
+}
+
+.multiselect__input::-moz-placeholder {
+  color: #b9c8de;
 }
 
 .multiselect__input::placeholder {
