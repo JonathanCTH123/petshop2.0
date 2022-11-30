@@ -41,4 +41,10 @@
     </div>
 </div>
 
+{{-- @include('brackets/admin-ui::admin.includes.avatar-uploader', [
+    'mediaCollection' => app(App\Models\TblCliente::class)->getMediaCollection('imagen_cliente'),
+    'media' => $tblCliente->getThumbs200ForCollection('imagen_cliente'),
+    'label' =>'Imagen'
+]) --}}
+
 

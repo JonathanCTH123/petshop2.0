@@ -26,11 +26,11 @@ class UpdateTblFacturaDetalle extends FormRequest
     public function rules(): array
     {
         return [
-            'id_factura' => ['sometimes', 'integer'],
-            'id_articulo' => ['sometimes', 'integer'],
+            'id_factura' => ['sometimes'],
+            'id_articulo' => ['sometimes'],
             'cantidad' => ['sometimes', 'integer'],
             'precio_unitario' => ['sometimes', 'numeric'],
-            
+
         ];
     }
 

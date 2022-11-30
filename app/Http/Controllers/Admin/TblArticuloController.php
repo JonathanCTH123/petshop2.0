@@ -19,6 +19,8 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use App\Models\TblAnimal;
+use App\Models\TblProveedor;
 
 class TblArticuloController extends Controller
 {
@@ -40,7 +42,12 @@ class TblArticuloController extends Controller
             ['id', 'nombre', 'descripcion', 'cantidad', 'precio', 'estado', 'id_animal', 'id_proveedor'],
 
             // set columns to searchIn
-            ['id', 'nombre', 'descripcion']
+            ['id', 'nombre', 'descripcion'],
+
+            function ($query) use ($request) {
+                $query->with(['Proveedor']);
+                $query->with(['Animal']);
+            }
         );
 
         if ($request->ajax()) {
@@ -52,7 +59,12 @@ class TblArticuloController extends Controller
             return ['data' => $data];
         }
 
-        return view('admin.tbl-articulo.index', ['data' => $data]);
+        return view('admin.tbl-articulo.index', [
+            'data' => $data,
+            'proveedores' => TblProveedor::all(),
+            'animales' => TblAnimal::all()
+
+        ]);
     }
 
     /**
@@ -65,7 +77,11 @@ class TblArticuloController extends Controller
     {
         $this->authorize('admin.tbl-articulo.create');
 
-        return view('admin.tbl-articulo.create');
+        return view('admin.tbl-articulo.create',
+        [
+            'proveedores' => TblProveedor::all(),
+            'animales' => TblAnimal::all()
+        ]);
     }
 
     /**
@@ -78,6 +94,8 @@ class TblArticuloController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
+        $sanitized['id_proveedor'] = $sanitized['id_proveedor']['key'];
+        $sanitized['id_animal'] = $sanitized['id_animal']['key'];
 
         // Store the TblArticulo
         $tblArticulo = TblArticulo::create($sanitized);
@@ -117,6 +135,8 @@ class TblArticuloController extends Controller
 
         return view('admin.tbl-articulo.edit', [
             'tblArticulo' => $tblArticulo,
+            'proveedores' => TblProveedor::all(),
+            'animales' => TblAnimal::all()
         ]);
     }
 
@@ -131,6 +151,8 @@ class TblArticuloController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
+        $sanitized['id_proveedor'] = $sanitized['id_proveedor']['key'];
+        $sanitized['id_animal'] = $sanitized['id_animal']['key'];
 
         // Update changed values TblArticulo
         $tblArticulo->update($sanitized);

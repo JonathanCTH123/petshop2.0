@@ -31,9 +31,9 @@ class StoreTblArticulo extends FormRequest
             'cantidad' => ['required', 'integer'],
             'precio' => ['required', 'numeric'],
             'estado' => ['required', 'integer'],
-            'id_animal' => ['required', 'integer'],
-            'id_proveedor' => ['required', 'integer'],
-            
+            'id_animal' => ['required'],
+            'id_proveedor' => ['required'],
+
         ];
     }
 

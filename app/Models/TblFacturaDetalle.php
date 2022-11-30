@@ -13,17 +13,26 @@ class TblFacturaDetalle extends Model
         'id_articulo',
         'cantidad',
         'precio_unitario',
-    
+
     ];
-    
-    
+
+
     protected $dates = [
         'created_at',
         'updated_at',
-    
+
     ];
-    
+
     protected $appends = ['resource_url'];
+
+
+    public function Factura() {
+        return $this->belongsTo(TblFactura::class, 'id_factura');
+    }
+
+    public function Articulo() {
+        return $this->belongsTo(TblArticulo::class, 'id_articulo');
+    }
 
     /* ************************ ACCESSOR ************************* */
 

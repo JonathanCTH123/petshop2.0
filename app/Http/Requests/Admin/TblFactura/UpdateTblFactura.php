@@ -26,10 +26,10 @@ class UpdateTblFactura extends FormRequest
     public function rules(): array
     {
         return [
-            'id_cliente' => ['sometimes', 'integer'],
+            'id_cliente' => ['sometimes'],
             'fecha' => ['sometimes', 'date'],
-            'estado' => ['sometimes', 'integer'],
-            
+            'estado' => ['sometimes'],
+
         ];
     }
 

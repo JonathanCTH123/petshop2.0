@@ -26,11 +26,11 @@ class StoreTblFacturaDetalle extends FormRequest
     public function rules(): array
     {
         return [
-            'id_factura' => ['required', 'integer'],
-            'id_articulo' => ['required', 'integer'],
+            'id_factura' => ['required'],
+            'id_articulo' => ['required'],
             'cantidad' => ['required', 'integer'],
             'precio_unitario' => ['required', 'numeric'],
-            
+
         ];
     }
 

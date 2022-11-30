@@ -10,8 +10,8 @@ Vue.component('tbl-cliente-form', {
                 dui:  '' ,
                 fecha_nacimiento:  '' ,
                 img:  '' ,
-                
-            }
+            },
+            mediaCollections: ['imagen_cliente']
         }
     }
 

@@ -26,10 +26,10 @@ class StoreTblFactura extends FormRequest
     public function rules(): array
     {
         return [
-            'id_cliente' => ['required', 'integer'],
+            'id_cliente' => ['required'],
             'fecha' => ['required', 'date'],
-            'estado' => ['required', 'integer'],
-            
+            'estado' => ['required'],
+
         ];
     }
 

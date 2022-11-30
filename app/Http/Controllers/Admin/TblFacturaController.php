@@ -19,6 +19,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use App\Models\TblCliente;
 
 class TblFacturaController extends Controller
 {
@@ -40,7 +41,11 @@ class TblFacturaController extends Controller
             ['id', 'id_cliente', 'fecha', 'estado'],
 
             // set columns to searchIn
-            ['id']
+            ['id'],
+
+            function ($query) use ($request) {
+                $query->with(['Cliente']);
+            }
         );
 
         if ($request->ajax()) {
@@ -52,7 +57,11 @@ class TblFacturaController extends Controller
             return ['data' => $data];
         }
 
-        return view('admin.tbl-factura.index', ['data' => $data]);
+        return view('admin.tbl-factura.index', [
+            'data' => $data,
+            'clientes' => TblCliente::all()
+
+        ]);
     }
 
     /**
@@ -65,7 +74,10 @@ class TblFacturaController extends Controller
     {
         $this->authorize('admin.tbl-factura.create');
 
-        return view('admin.tbl-factura.create');
+        return view('admin.tbl-factura.create',
+        [
+            'clientes' => TblCliente::all()
+        ]);
     }
 
     /**
@@ -79,8 +91,10 @@ class TblFacturaController extends Controller
         // Sanitize input
         $sanitized = $request->getSanitized();
 
+
         // Store the TblFactura
         $tblFactura = TblFactura::create($sanitized);
+        $sanitized['id_cliente'] = $sanitized['id_cliente']['key'];
 
         if ($request->ajax()) {
             return ['redirect' => url('admin/tbl-facturas'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
@@ -117,6 +131,7 @@ class TblFacturaController extends Controller
 
         return view('admin.tbl-factura.edit', [
             'tblFactura' => $tblFactura,
+            'clientes' => TblCliente::all()
         ]);
     }
 
@@ -131,6 +146,7 @@ class TblFacturaController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
+        $sanitized['id_cliente'] = $sanitized['id_cliente']['key'];
 
         // Update changed values TblFactura
         $tblFactura->update($sanitized);

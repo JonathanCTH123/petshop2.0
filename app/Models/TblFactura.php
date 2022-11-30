@@ -12,17 +12,27 @@ class TblFactura extends Model
         'id_cliente',
         'fecha',
         'estado',
-    
+
     ];
-    
-    
+
+
     protected $dates = [
         'fecha',
         'created_at',
         'updated_at',
-    
+
     ];
-    
+
+    public function DetallesFactura()
+    {
+        return $this->hasMany(TblFacturaDetalle::class);
+    }
+
+
+    public function Cliente() {
+        return $this->belongsTo(TblCliente::class, 'id_cliente');
+    }
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */

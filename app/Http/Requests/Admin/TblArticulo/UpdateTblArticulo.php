@@ -31,9 +31,9 @@ class UpdateTblArticulo extends FormRequest
             'cantidad' => ['sometimes', 'integer'],
             'precio' => ['sometimes', 'numeric'],
             'estado' => ['sometimes', 'integer'],
-            'id_animal' => ['sometimes', 'integer'],
-            'id_proveedor' => ['sometimes', 'integer'],
-            
+            'id_animal' => ['sometimes'],
+            'id_proveedor' => ['sometimes'],
+
         ];
     }
 

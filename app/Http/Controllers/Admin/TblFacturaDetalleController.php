@@ -19,6 +19,8 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use App\Models\TblArticulo;
+use App\Models\TblFactura;
 
 class TblFacturaDetalleController extends Controller
 {
@@ -40,7 +42,13 @@ class TblFacturaDetalleController extends Controller
             ['id', 'id_factura', 'id_articulo', 'cantidad', 'precio_unitario'],
 
             // set columns to searchIn
-            ['id']
+            ['id'],
+
+            function ($query) use ($request) {
+                $query->with(['Factura']);
+                $query->with(['Articulo']);
+
+            }
         );
 
         if ($request->ajax()) {
@@ -52,7 +60,11 @@ class TblFacturaDetalleController extends Controller
             return ['data' => $data];
         }
 
-        return view('admin.tbl-factura-detalle.index', ['data' => $data]);
+        return view('admin.tbl-factura-detalle.index', [
+            'data' => $data,
+            'articulos' => TblArticulo::all(),
+            'facturas' => TblFactura::all()
+        ]);
     }
 
     /**
@@ -65,7 +77,10 @@ class TblFacturaDetalleController extends Controller
     {
         $this->authorize('admin.tbl-factura-detalle.create');
 
-        return view('admin.tbl-factura-detalle.create');
+        return view('admin.tbl-factura-detalle.create', [
+            'articulos' => TblArticulo::all(),
+            'facturas' => TblFactura::all()
+        ]);
     }
 
     /**
@@ -78,6 +93,8 @@ class TblFacturaDetalleController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
+        $sanitized['id_factura'] = $sanitized['id_factura']['key'];
+        $sanitized['id_articulo'] = $sanitized['id_articulo']['key'];
 
         // Store the TblFacturaDetalle
         $tblFacturaDetalle = TblFacturaDetalle::create($sanitized);
@@ -117,6 +134,8 @@ class TblFacturaDetalleController extends Controller
 
         return view('admin.tbl-factura-detalle.edit', [
             'tblFacturaDetalle' => $tblFacturaDetalle,
+            'articulos' => TblArticulo::all(),
+            'facturas' => TblFactura::all()
         ]);
     }
 
@@ -134,6 +153,8 @@ class TblFacturaDetalleController extends Controller
 
         // Update changed values TblFacturaDetalle
         $tblFacturaDetalle->update($sanitized);
+        $sanitized['id_factura'] = $sanitized['id_factura']['key'];
+        $sanitized['id_articulo'] = $sanitized['id_articulo']['key'];
 
         if ($request->ajax()) {
             return [
