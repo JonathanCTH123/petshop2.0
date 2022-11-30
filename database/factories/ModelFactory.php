@@ -51,3 +51,70 @@ $factory->define(App\Models\TblAnimal::class, static function (Faker\Generator $
         
     ];
 });
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\TblCliente::class, static function (Faker\Generator $faker) {
+    return [
+        'nombres' => $faker->sentence,
+        'apellidos' => $faker->sentence,
+        'dui' => $faker->sentence,
+        'fecha_nacimiento' => $faker->date(),
+        'img' => $faker->sentence,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\TblProveedor::class, static function (Faker\Generator $faker) {
+    return [
+        'nombre' => $faker->sentence,
+        'fecha' => $faker->date(),
+        'estado' => $faker->randomNumber(5),
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\TblArticulo::class, static function (Faker\Generator $faker) {
+    return [
+        'nombre' => $faker->sentence,
+        'descripcion' => $faker->sentence,
+        'cantidad' => $faker->randomNumber(5),
+        'precio' => $faker->randomFloat,
+        'estado' => $faker->randomNumber(5),
+        'id_animal' => $faker->randomNumber(5),
+        'id_proveedor' => $faker->randomNumber(5),
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\TblFactura::class, static function (Faker\Generator $faker) {
+    return [
+        'id_cliente' => $faker->randomNumber(5),
+        'fecha' => $faker->date(),
+        'estado' => $faker->randomNumber(5),
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\TblFacturaDetalle::class, static function (Faker\Generator $faker) {
+    return [
+        'id_factura' => $faker->randomNumber(5),
+        'id_articulo' => $faker->randomNumber(5),
+        'cantidad' => $faker->randomNumber(5),
+        'precio_unitario' => $faker->randomFloat,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});

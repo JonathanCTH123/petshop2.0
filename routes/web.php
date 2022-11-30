@@ -88,3 +88,78 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
         });
     });
 });
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('tbl-clientes')->name('tbl-clientes/')->group(static function() {
+            Route::get('/',                                             'TblClienteController@index')->name('index');
+            Route::get('/create',                                       'TblClienteController@create')->name('create');
+            Route::post('/',                                            'TblClienteController@store')->name('store');
+            Route::get('/{tblCliente}/edit',                            'TblClienteController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'TblClienteController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{tblCliente}',                                'TblClienteController@update')->name('update');
+            Route::delete('/{tblCliente}',                              'TblClienteController@destroy')->name('destroy');
+        });
+    });
+});
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('tbl-proveedors')->name('tbl-proveedors/')->group(static function() {
+            Route::get('/',                                             'TblProveedorController@index')->name('index');
+            Route::get('/create',                                       'TblProveedorController@create')->name('create');
+            Route::post('/',                                            'TblProveedorController@store')->name('store');
+            Route::get('/{tblProveedor}/edit',                          'TblProveedorController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'TblProveedorController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{tblProveedor}',                              'TblProveedorController@update')->name('update');
+            Route::delete('/{tblProveedor}',                            'TblProveedorController@destroy')->name('destroy');
+        });
+    });
+});
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('tbl-articulos')->name('tbl-articulos/')->group(static function() {
+            Route::get('/',                                             'TblArticuloController@index')->name('index');
+            Route::get('/create',                                       'TblArticuloController@create')->name('create');
+            Route::post('/',                                            'TblArticuloController@store')->name('store');
+            Route::get('/{tblArticulo}/edit',                           'TblArticuloController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'TblArticuloController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{tblArticulo}',                               'TblArticuloController@update')->name('update');
+            Route::delete('/{tblArticulo}',                             'TblArticuloController@destroy')->name('destroy');
+        });
+    });
+});
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('tbl-facturas')->name('tbl-facturas/')->group(static function() {
+            Route::get('/',                                             'TblFacturaController@index')->name('index');
+            Route::get('/create',                                       'TblFacturaController@create')->name('create');
+            Route::post('/',                                            'TblFacturaController@store')->name('store');
+            Route::get('/{tblFactura}/edit',                            'TblFacturaController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'TblFacturaController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{tblFactura}',                                'TblFacturaController@update')->name('update');
+            Route::delete('/{tblFactura}',                              'TblFacturaController@destroy')->name('destroy');
+        });
+    });
+});
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('tbl-factura-detalles')->name('tbl-factura-detalles/')->group(static function() {
+            Route::get('/',                                             'TblFacturaDetalleController@index')->name('index');
+            Route::get('/create',                                       'TblFacturaDetalleController@create')->name('create');
+            Route::post('/',                                            'TblFacturaDetalleController@store')->name('store');
+            Route::get('/{tblFacturaDetalle}/edit',                     'TblFacturaDetalleController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'TblFacturaDetalleController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{tblFacturaDetalle}',                         'TblFacturaDetalleController@update')->name('update');
+            Route::delete('/{tblFacturaDetalle}',                       'TblFacturaDetalleController@destroy')->name('destroy');
+        });
+    });
+});
