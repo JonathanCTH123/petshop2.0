@@ -45,8 +45,7 @@ class TblArticuloController extends Controller
             ['id', 'nombre', 'descripcion'],
 
             function ($query) use ($request) {
-                $query->with(['Proveedor']);
-                $query->with(['Animal']);
+                $query->with(['Proveedor', 'Animal']);
             }
         );
 

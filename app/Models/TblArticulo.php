@@ -40,6 +40,7 @@ class TblArticulo extends Model
         return $this->belongsTo(TblAnimal::class, 'id_animal');
     }
 
+
     /* ************************ ACCESSOR ************************* */
 
     public function getResourceUrlAttribute()

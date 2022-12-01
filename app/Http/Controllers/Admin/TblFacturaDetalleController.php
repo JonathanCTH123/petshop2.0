@@ -150,11 +150,12 @@ class TblFacturaDetalleController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
+        // $sanitized['id_factura'] = $sanitized['id_factura']['key'];
+        $sanitized['id_articulo'] = $sanitized['id_articulo']['key'];
 
         // Update changed values TblFacturaDetalle
         $tblFacturaDetalle->update($sanitized);
-        $sanitized['id_factura'] = $sanitized['id_factura']['key'];
-        $sanitized['id_articulo'] = $sanitized['id_articulo']['key'];
+
 
         if ($request->ajax()) {
             return [

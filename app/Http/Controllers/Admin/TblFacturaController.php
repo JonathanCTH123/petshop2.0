@@ -90,11 +90,11 @@ class TblFacturaController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
-
+        $sanitized['id_cliente'] = $sanitized['id_cliente']['key'];
 
         // Store the TblFactura
         $tblFactura = TblFactura::create($sanitized);
-        $sanitized['id_cliente'] = $sanitized['id_cliente']['key'];
+
 
         if ($request->ajax()) {
             return ['redirect' => url('admin/tbl-facturas'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];

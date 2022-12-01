@@ -41,7 +41,17 @@
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('id_animal'), 'has-success': fields.id_animal && fields.id_animal.valid }">
     <label for="id_animal" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.tbl-articulo.columns.id_animal') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input type="text" v-model="form.id_animal" v-validate="'required|integer'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('id_animal'), 'form-control-success': fields.id_animal && fields.id_animal.valid}" id="id_animal" name="id_animal" placeholder="{{ trans('admin.tbl-articulo.columns.id_animal') }}">
+        {{-- <input type="text" v-model="form.id_animal" v-validate="'required|integer'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('id_animal'), 'form-control-success': fields.id_animal && fields.id_animal.valid}" id="id_animal" name="id_animal" placeholder="{{ trans('admin.tbl-articulo.columns.id_animal') }}">
+        <div v-if="errors.has('id_animal')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('id_animal') }}</div> --}}
+        <multiselect v-model="form.id_animal"
+             :options="{{ $animales->map(function($animal) { return ['key' => $animal->id, 'label' =>  $animal->nombre]; })->toJson() }}"
+             label="label"
+             track-by="key"
+             placeholder="{{ __('Buscar animal') }}"
+             :limit="1"
+             :multiple="false"
+             :allowEmpty="false"
+             ></multiselect>
         <div v-if="errors.has('id_animal')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('id_animal') }}</div>
     </div>
 </div>
@@ -49,8 +59,19 @@
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('id_proveedor'), 'has-success': fields.id_proveedor && fields.id_proveedor.valid }">
     <label for="id_proveedor" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.tbl-articulo.columns.id_proveedor') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input type="text" v-model="form.id_proveedor" v-validate="'required|integer'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('id_proveedor'), 'form-control-success': fields.id_proveedor && fields.id_proveedor.valid}" id="id_proveedor" name="id_proveedor" placeholder="{{ trans('admin.tbl-articulo.columns.id_proveedor') }}">
+        {{-- <input type="text" v-model="form.id_proveedor" v-validate="'required|integer'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('id_proveedor'), 'form-control-success': fields.id_proveedor && fields.id_proveedor.valid}" id="id_proveedor" name="id_proveedor" placeholder="{{ trans('admin.tbl-articulo.columns.id_proveedor') }}">
+        <div v-if="errors.has('id_proveedor')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('id_proveedor') }}</div> --}}
+        <multiselect v-model="form.id_proveedor"
+             :options="{{ $proveedores->map(function($proveedor) { return ['key' => $proveedor->id, 'label' =>  $proveedor->nombre]; })->toJson() }}"
+             label="label"
+             track-by="key"
+             placeholder="{{ __('Buscar proveedor') }}"
+             :limit="1"
+             :multiple="false"
+             :allowEmpty="false"
+             ></multiselect>
         <div v-if="errors.has('id_proveedor')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('id_proveedor') }}</div>
+
     </div>
 </div>
 

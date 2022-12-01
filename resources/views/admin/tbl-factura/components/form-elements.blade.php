@@ -1,8 +1,25 @@
-<div class="form-group row align-items-center" :class="{'has-danger': errors.has('id_cliente'), 'has-success': fields.id_cliente && fields.id_cliente.valid }">
+{{-- <div class="form-group row align-items-center" :class="{'has-danger': errors.has('id_cliente'), 'has-success': fields.id_cliente && fields.id_cliente.valid }">
     <label for="id_cliente" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.tbl-factura.columns.id_cliente') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
         <input type="text" v-model="form.id_cliente" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('id_cliente'), 'form-control-success': fields.id_cliente && fields.id_cliente.valid}" id="id_cliente" name="id_cliente" placeholder="{{ trans('admin.tbl-factura.columns.id_cliente') }}">
         <div v-if="errors.has('id_cliente')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('id_cliente') }}</div>
+    </div>
+</div> --}}
+
+<div class="form-group row align-items-center" :class="{'has-danger': errors.has('id_cliente'), 'has-success': fields.id_cliente && fields.id_cliente.valid }">
+    <label for="id_cliente" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.tbl-factura.columns.id_cliente') }}</label>
+        <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
+            <multiselect v-model="form.id_cliente"
+             :options="{{ $clientes->map(function($cliente) { return ['key' => $cliente->id, 'label' =>  $cliente->nombres." ".$cliente->apellidos]; })->toJson() }}"
+             label="label"
+             track-by="key"
+             placeholder="{{ __('Buscar clientes') }}"
+             :limit="1"
+             :multiple="false"
+             :allowEmpty="false"
+             ></multiselect>
+        {{-- <input type="text" v-model="form.id_tipo_animal"  @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('id_tipo_animal'), 'form-control-success': fields.id_tipo_animal && fields.id_tipo_animal.valid}" id="id_tipo_animal" name="id_tipo_animal" placeholder="{{ trans('admin.tbl-animal.columns.id_tipo_animal') }}"> --}}
+        <div v-if="errors.has('form.id_cliente')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('id_cliente') }}</div>
     </div>
 </div>
 
